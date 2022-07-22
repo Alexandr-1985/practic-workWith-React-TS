@@ -1,3 +1,4 @@
+import { TextField } from "@mui/material";
 import React, { ChangeEvent, useState } from "react";
 
 type EditNoteType = {
@@ -14,15 +15,15 @@ const EditNote = (props: EditNoteType) => {
     setValue(e.currentTarget.value);
   };
   const onClickHandler = () => {
-    setEditNote(!EditNote);
+    setEditNote(!editNote);
   };
   const onBlurHandler = () => {
     if (value) {
-      setEditNote(!EditNote);
+      setEditNote(!editNote);
       props.changeTitle(props.id, value);
     } else {
       setValue(props.title);
-      setEditNote(!EditNote);
+      setEditNote(!editNote);
     }
   };
   const onClickChangeTitleHandler = () => {
@@ -32,12 +33,15 @@ const EditNote = (props: EditNoteType) => {
   return (
     <div>
       {editNote ? (
-        <input
+        <TextField
           autoFocus
           onChange={onChangeHandler}
           onBlur={onBlurHandler}
           value={value}
           type="text"
+          id="outlined-basic"
+          label="Outlined"
+          variant="outlined"
         />
       ) : (
         <span onDoubleClick={onClickHandler}>{props.title}</span>

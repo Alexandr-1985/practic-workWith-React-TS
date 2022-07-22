@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { v1 } from "uuid";
 import NoteList from "./components/noteList/NoteList";
 import "./App.css";
+import { LinearProgress } from "@mui/material";
 
 export type noteType = {
   id: string;
@@ -35,6 +36,7 @@ function App() {
         changeTitle={changeTitle}
         notes={notes}
       />
+      <LinearProgress />
     </div>
   );
 }

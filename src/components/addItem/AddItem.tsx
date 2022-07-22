@@ -1,3 +1,4 @@
+import { TextField } from "@mui/material";
 import React, { ChangeEvent, useState, KeyboardEvent } from "react";
 import s from "./AddItem.module.css";
 
@@ -30,12 +31,16 @@ const AddItem = (props: AddItemType) => {
   };
   return (
     <div>
-      <input
+      <TextField
         className={error ? s.error : ""}
         onKeyPress={onKeyPressHandler}
         onChange={onChangeHandler}
         value={value}
+        placeholder={"Write note"}
         type="text"
+        id="outlined-basic"
+        label="Outlined"
+        variant="outlined"
       />
       <button
         disabled={!value}
