@@ -1,7 +1,8 @@
 import React from "react";
-import { noteType } from "../../App";
+// import { noteType } from "../../App";
 import EditNote from "../editNote/EditNote";
 import AddItem from "../addItem/AddItem";
+import { noteType } from "../../bll/noteListReducer";
 
 type NoteListType = {
   notes: Array<noteType>;
