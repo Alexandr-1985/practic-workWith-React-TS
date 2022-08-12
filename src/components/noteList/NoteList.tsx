@@ -3,6 +3,7 @@ import React from "react";
 import EditNote from "../editNote/EditNote";
 import AddItem from "../addItem/AddItem";
 import { noteType } from "../../bll/noteListReducer";
+import { Checkbox } from "@mui/material";
 
 type NoteListType = {
   notes: Array<noteType>;
@@ -23,6 +24,7 @@ const NoteList = (props: NoteListType) => {
       {props.notes.map((n) => {
         return (
           <div key={n.id} className={"note"}>
+            <Checkbox />
             <EditNote
               id={n.id}
               changeTitle={props.changeTitle}

@@ -24,7 +24,7 @@ export const noteListReducer = (
       const newNote = {
         id: v1(),
         title: action.title,
-        priority: "important",
+        priority: "unimportant",
       };
       return [newNote, ...state];
     case "CHANGE-TITLE":
@@ -33,8 +33,9 @@ export const noteListReducer = (
       );
     case "REMOVE-NOTE":
       return state.filter((n) => n.id !== action.id);
+    default:
+      return state;
   }
-  return state;
 };
 
 //ACTION CREATOR
@@ -46,9 +47,9 @@ export const addNoteAC = (title: string) => {
 };
 export const changeTitleAC = (id: string, title: string) => {
   return {
-    id: id,
-    title: title,
     type: "CHANGE-TITLE",
+    id,
+    title,
   } as const;
 };
 export const removeNoteAC = (id: string) => {
@@ -56,7 +57,7 @@ export const removeNoteAC = (id: string) => {
 };
 
 //TYPE
-type NoteListAT = AddNoteAT;
+type NoteListAT = AddNoteAT | ChangeTitleAT | RemoveNoteAT;
 type AddNoteAT = ReturnType<typeof addNoteAC>;
 type ChangeTitleAT = ReturnType<typeof changeTitleAC>;
 type RemoveNoteAT = ReturnType<typeof removeNoteAC>;
